@@ -12,7 +12,7 @@ Transform the Electron desktop app into a self-hosted web application. The journ
 
 Decimal phases appear between their surrounding integers in numeric order.
 
-- [ ] **Phase 1: Server Foundation** - Fastify HTTP server with WebSocket support
+- [x] **Phase 1: Server Foundation** - Fastify HTTP server with WebSocket support
 - [ ] **Phase 2: Core API** - HTTP endpoints replacing IPC handlers
 - [ ] **Phase 3: Real-time Events** - WebSocket streaming for agent responses
 - [ ] **Phase 4: File Handling** - Upload, storage, and download for attachments
@@ -34,8 +34,8 @@ Decimal phases appear between their surrounding integers in numeric order.
 **Plans**: 2 plans
 
 Plans:
-- [ ] 01-01-PLAN.md - Core Fastify server with WebSocket support and graceful shutdown
-- [ ] 01-02-PLAN.md - Static file serving and Vite dev server integration
+- [x] 01-01-PLAN.md - Core Fastify server with WebSocket support and graceful shutdown
+- [x] 01-02-PLAN.md - Static file serving and Vite dev server integration
 
 ### Phase 2: Core API
 **Goal**: All session and configuration operations available via HTTP endpoints
@@ -124,7 +124,7 @@ Phases execute in numeric order: 1 -> 2 -> 3 -> 4 -> 5 -> 6
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Server Foundation | 0/2 | Planned | - |
+| 1. Server Foundation | 2/2 | Complete | 2026-01-27 |
 | 2. Core API | 0/2 | Not started | - |
 | 3. Real-time Events | 0/2 | Not started | - |
 | 4. File Handling | 0/2 | Not started | - |

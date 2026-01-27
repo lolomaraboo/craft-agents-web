@@ -9,11 +9,11 @@ Requirements for Web Foundation milestone. Each maps to roadmap phases.
 
 ### Server Foundation
 
-- [ ] **SRVR-01**: Fastify HTTP server starts and listens on configurable port
-- [ ] **SRVR-02**: WebSocket server accepts connections and manages client lifecycle
-- [ ] **SRVR-03**: Static file serving delivers React app bundle
-- [ ] **SRVR-04**: Development server supports hot reload for frontend changes
-- [ ] **SRVR-05**: Server gracefully shuts down on SIGTERM/SIGINT
+- [x] **SRVR-01**: Fastify HTTP server starts and listens on configurable port
+- [x] **SRVR-02**: WebSocket server accepts connections and manages client lifecycle
+- [x] **SRVR-03**: Static file serving delivers React app bundle
+- [x] **SRVR-04**: Development server supports hot reload for frontend changes
+- [x] **SRVR-05**: Server gracefully shuts down on SIGTERM/SIGINT
 
 ### API Layer
 
@@ -97,11 +97,11 @@ Which phases cover which requirements. Updated during roadmap creation.
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| SRVR-01 | Phase 1 | Pending |
-| SRVR-02 | Phase 1 | Pending |
-| SRVR-03 | Phase 1 | Pending |
-| SRVR-04 | Phase 1 | Pending |
-| SRVR-05 | Phase 1 | Pending |
+| SRVR-01 | Phase 1 | Complete |
+| SRVR-02 | Phase 1 | Complete |
+| SRVR-03 | Phase 1 | Complete |
+| SRVR-04 | Phase 1 | Complete |
+| SRVR-05 | Phase 1 | Complete |
 | API-01 | Phase 2 | Pending |
 | API-02 | Phase 2 | Pending |
 | API-03 | Phase 2 | Pending |
@@ -141,4 +141,4 @@ Which phases cover which requirements. Updated during roadmap creation.
 
 ---
 *Requirements defined: 2026-01-27*
-*Last updated: 2026-01-27 after roadmap creation*
+*Last updated: 2026-01-27 after Phase 1 completion*
