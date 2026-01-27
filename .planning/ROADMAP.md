@@ -47,11 +47,11 @@ Plans:
   3. User can abort in-progress requests via HTTP endpoint
   4. User can manage workspaces (CRUD) and their configurations
   5. User can manage MCP server connections via HTTP endpoints
-**Plans**: TBD
+**Plans**: 2 plans
 
 Plans:
-- [ ] 02-01: Session CRUD and message endpoints
-- [ ] 02-02: Workspace, config, credential, MCP, and theme endpoints
+- [ ] 02-01-PLAN.md - Session CRUD, message, and abort endpoints with TypeBox validation
+- [ ] 02-02-PLAN.md - Workspace, config, MCP, and theme endpoints
 
 ### Phase 3: Real-time Events
 **Goal**: Browser receives real-time updates during agent interactions
