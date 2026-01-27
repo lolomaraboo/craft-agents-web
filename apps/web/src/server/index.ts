@@ -2,6 +2,7 @@ import Fastify, { type FastifyInstance } from 'fastify'
 import { getConfig, type ServerConfig } from './lib/config.js'
 import { setupGracefulShutdown } from './lib/shutdown.js'
 import { websocketPlugin } from './plugins/websocket.js'
+import { staticPlugin } from './plugins/static.js'
 
 export async function createServer(config: ServerConfig): Promise<FastifyInstance> {
   const fastify = Fastify({
@@ -13,8 +14,11 @@ export async function createServer(config: ServerConfig): Promise<FastifyInstanc
     }
   })
 
-  // Register WebSocket plugin (must be registered before routes)
+  // Register WebSocket plugin (must be registered before static plugin)
   await fastify.register(websocketPlugin)
+
+  // Register static file serving plugin (disabled in dev mode - Vite handles frontend)
+  await fastify.register(staticPlugin, { enabled: !config.isDev })
 
   return fastify
 }
