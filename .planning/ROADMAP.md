@@ -31,11 +31,11 @@ Decimal phases appear between their surrounding integers in numeric order.
   3. Browser can load React app bundle from server root URL
   4. Frontend changes hot-reload in browser during development
   5. Server shuts down cleanly when process receives SIGTERM
-**Plans**: TBD
+**Plans**: 2 plans
 
 Plans:
-- [ ] 01-01: Fastify server setup with WebSocket integration
-- [ ] 01-02: Static file serving and Vite dev server integration
+- [ ] 01-01-PLAN.md - Core Fastify server with WebSocket support and graceful shutdown
+- [ ] 01-02-PLAN.md - Static file serving and Vite dev server integration
 
 ### Phase 2: Core API
 **Goal**: All session and configuration operations available via HTTP endpoints
@@ -124,7 +124,7 @@ Phases execute in numeric order: 1 -> 2 -> 3 -> 4 -> 5 -> 6
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Server Foundation | 0/2 | Not started | - |
+| 1. Server Foundation | 0/2 | Planned | - |
 | 2. Core API | 0/2 | Not started | - |
 | 3. Real-time Events | 0/2 | Not started | - |
 | 4. File Handling | 0/2 | Not started | - |
