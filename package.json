@@ -10,6 +10,9 @@
     "!apps/online-docs"
   ],
   "scripts": {
+    "web:dev": "cd apps/web && bun run dev",
+    "web:build": "cd apps/web && bun run build",
+    "web:preview": "cd apps/web && bun run preview",
     "test": "bun test",
     "typecheck": "cd packages/shared && bun run tsc --noEmit",
     "typecheck:all": "cd packages/core && bun run tsc --noEmit && cd ../shared && bun run tsc --noEmit",

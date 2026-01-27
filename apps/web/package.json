@@ -4,7 +4,7 @@
   "type": "module",
   "private": true,
   "scripts": {
-    "dev:server": "tsx watch src/server/index.ts",
+    "dev:server": "NODE_ENV=development tsx watch src/server/index.ts",
     "dev:client": "vite",
     "dev": "concurrently \"bun run dev:server\" \"bun run dev:client\"",
     "build:client": "vite build",
