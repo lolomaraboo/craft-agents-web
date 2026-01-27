@@ -97,48 +97,48 @@ Which phases cover which requirements. Updated during roadmap creation.
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| SRVR-01 | — | Pending |
-| SRVR-02 | — | Pending |
-| SRVR-03 | — | Pending |
-| SRVR-04 | — | Pending |
-| SRVR-05 | — | Pending |
-| API-01 | — | Pending |
-| API-02 | — | Pending |
-| API-03 | — | Pending |
-| API-04 | — | Pending |
-| API-05 | — | Pending |
-| API-06 | — | Pending |
-| API-07 | — | Pending |
-| API-08 | — | Pending |
-| RTCM-01 | — | Pending |
-| RTCM-02 | — | Pending |
-| RTCM-03 | — | Pending |
-| RTCM-04 | — | Pending |
-| RTCM-05 | — | Pending |
-| RTCM-06 | — | Pending |
-| FILE-01 | — | Pending |
-| FILE-02 | — | Pending |
-| FILE-03 | — | Pending |
-| FILE-04 | — | Pending |
-| AUTH-01 | — | Pending |
-| AUTH-02 | — | Pending |
-| AUTH-03 | — | Pending |
-| AUTH-04 | — | Pending |
-| AUTH-05 | — | Pending |
-| AUTH-06 | — | Pending |
-| AUTH-07 | — | Pending |
-| FRNT-01 | — | Pending |
-| FRNT-02 | — | Pending |
-| FRNT-03 | — | Pending |
-| FRNT-04 | — | Pending |
-| FRNT-05 | — | Pending |
-| FRNT-06 | — | Pending |
+| SRVR-01 | Phase 1 | Pending |
+| SRVR-02 | Phase 1 | Pending |
+| SRVR-03 | Phase 1 | Pending |
+| SRVR-04 | Phase 1 | Pending |
+| SRVR-05 | Phase 1 | Pending |
+| API-01 | Phase 2 | Pending |
+| API-02 | Phase 2 | Pending |
+| API-03 | Phase 2 | Pending |
+| API-04 | Phase 2 | Pending |
+| API-05 | Phase 2 | Pending |
+| API-06 | Phase 2 | Pending |
+| API-07 | Phase 2 | Pending |
+| API-08 | Phase 2 | Pending |
+| RTCM-01 | Phase 3 | Pending |
+| RTCM-02 | Phase 3 | Pending |
+| RTCM-03 | Phase 3 | Pending |
+| RTCM-04 | Phase 3 | Pending |
+| RTCM-05 | Phase 3 | Pending |
+| RTCM-06 | Phase 3 | Pending |
+| FILE-01 | Phase 4 | Pending |
+| FILE-02 | Phase 4 | Pending |
+| FILE-03 | Phase 4 | Pending |
+| FILE-04 | Phase 4 | Pending |
+| AUTH-01 | Phase 5 | Pending |
+| AUTH-02 | Phase 5 | Pending |
+| AUTH-03 | Phase 5 | Pending |
+| AUTH-04 | Phase 5 | Pending |
+| AUTH-05 | Phase 5 | Pending |
+| AUTH-06 | Phase 5 | Pending |
+| AUTH-07 | Phase 5 | Pending |
+| FRNT-01 | Phase 6 | Pending |
+| FRNT-02 | Phase 6 | Pending |
+| FRNT-03 | Phase 6 | Pending |
+| FRNT-04 | Phase 6 | Pending |
+| FRNT-05 | Phase 6 | Pending |
+| FRNT-06 | Phase 6 | Pending |
 
 **Coverage:**
 - v1.0 requirements: 36 total
-- Mapped to phases: 0
-- Unmapped: 36 (roadmap pending)
+- Mapped to phases: 36
+- Unmapped: 0
 
 ---
 *Requirements defined: 2026-01-27*
-*Last updated: 2026-01-27 after initial definition*
+*Last updated: 2026-01-27 after roadmap creation*
