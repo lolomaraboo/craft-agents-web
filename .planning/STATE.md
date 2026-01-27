@@ -5,33 +5,33 @@
 See: .planning/PROJECT.md (updated 2026-01-27)
 
 **Core value:** Browser-based Claude agent access with 100% feature parity
-**Current focus:** Phase 1 - Server Foundation
+**Current focus:** Phase 1 - Server Foundation (Complete)
 
 ## Current Position
 
 Phase: 1 of 6 (Server Foundation)
-Plan: 1 of 2 in current phase
-Status: In progress
-Last activity: 2026-01-27 - Completed 01-01-PLAN.md
+Plan: 2 of 2 in current phase (PHASE COMPLETE)
+Status: Phase complete - ready for Phase 2
+Last activity: 2026-01-27 - Completed 01-02-PLAN.md
 
-Progress: [#---------] 8% (1/12 plans)
+Progress: [##--------] 17% (2/12 plans)
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 1
-- Average duration: 4 min
-- Total execution time: 4 min
+- Total plans completed: 2
+- Average duration: 4.5 min
+- Total execution time: 9 min
 
 **By Phase:**
 
 | Phase | Plans | Total | Avg/Plan |
 |-------|-------|-------|----------|
-| 01-server-foundation | 1/2 | 4 min | 4 min |
+| 01-server-foundation | 2/2 | 9 min | 4.5 min |
 
 **Recent Trend:**
-- Last 5 plans: 4 min
-- Trend: N/A (first plan)
+- Last 5 plans: 4 min, 5 min
+- Trend: Stable
 
 *Updated after each plan completion*
 
@@ -47,6 +47,9 @@ Recent decisions affecting current work:
 - [Research]: Adapter pattern for IPC->HTTP (minimize renderer changes)
 - [01-01]: Used fastify-plugin wrapper for proper WebSocket plugin encapsulation
 - [01-01]: Attached WebSocket message handlers synchronously to avoid async trap
+- [01-02]: Set NODE_ENV=development explicitly (bun defaults to production)
+- [01-02]: Excluded client code from main tsconfig (Vite handles client TypeScript)
+- [01-02]: Static plugin uses SPA fallback for non-API/non-WS GET requests
 
 ### Pending Todos
 
@@ -58,6 +61,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-01-27T20:59:31Z
-Stopped at: Completed 01-01-PLAN.md
+Last session: 2026-01-27T21:06:50Z
+Stopped at: Completed 01-02-PLAN.md (Phase 1 complete)
 Resume file: None
