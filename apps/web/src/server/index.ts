@@ -1,6 +1,7 @@
 import Fastify, { type FastifyInstance } from 'fastify'
 import { getConfig, type ServerConfig } from './lib/config.js'
 import { setupGracefulShutdown } from './lib/shutdown.js'
+import { websocketPlugin } from './plugins/websocket.js'
 
 export async function createServer(config: ServerConfig): Promise<FastifyInstance> {
   const fastify = Fastify({
@@ -11,6 +12,9 @@ export async function createServer(config: ServerConfig): Promise<FastifyInstanc
         : undefined
     }
   })
+
+  // Register WebSocket plugin (must be registered before routes)
+  await fastify.register(websocketPlugin)
 
   return fastify
 }
