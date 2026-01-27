@@ -6,7 +6,9 @@ A self-hosted web application that provides browser-based access to Craft Agents
 
 ## Core Value
 
-Users can interact with Claude agents from any browser, maintaining full feature parity with the desktop app including real-time streaming, MCP server support, and OAuth integrations.
+Users can interact with Claude agents from any browser, maintaining **100% feature parity** with the desktop app. The web interface must be **identical** to the Electron app - same layout, same components, same UX.
+
+**Key principle:** Reuse the entire React renderer (148 components) - only change the IPC→HTTP transport layer.
 
 ## Requirements
 
@@ -81,6 +83,20 @@ Users can interact with Claude agents from any browser, maintaining full feature
 - **Compatibility**: Must support same config/session format as Electron app
 - **Development**: Vite for frontend, esbuild for server (if needed)
 
+## Current Milestone: v1.0 Web Foundation
+
+**Goal:** Transform Electron main process into Node.js web server while preserving 100% feature parity.
+
+**Target features:**
+- Fastify HTTP server replacing Electron main process
+- WebSocket server for real-time event streaming
+- HTTP API endpoints for all IPC operations
+- React frontend adapted with fetch/WebSocket instead of IPC
+- File upload API for browser attachments
+- Server-side session management
+- OAuth callback handling in web context
+- Static file serving and dev server
+
 ## Key Decisions
 
 | Decision | Rationale | Outcome |
@@ -89,6 +105,8 @@ Users can interact with Claude agents from any browser, maintaining full feature
 | Keep file-based storage | Avoid database dependency, maintain config compatibility with Electron | — Pending |
 | Single app directory | Create `apps/web/` alongside `apps/electron/` | — Pending |
 | Adapter pattern for IPC | Minimize changes to renderer code, swap IPC→HTTP at boundary | — Pending |
+| Fastify over Express | 2-3x faster for JSON-heavy streaming, TypeScript-first | — Pending |
+| ws library for WebSocket | Fastest, simplest WebSocket library | — Pending |
 
 ---
-*Last updated: 2026-01-27 after initialization*
+*Last updated: 2026-01-27 after milestone v1.0 started*
