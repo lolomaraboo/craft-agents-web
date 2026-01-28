@@ -14,8 +14,8 @@ Decimal phases appear between their surrounding integers in numeric order.
 
 - [x] **Phase 1: Server Foundation** - Fastify HTTP server with WebSocket support
 - [x] **Phase 2: Core API** - HTTP endpoints replacing IPC handlers
-- [ ] **Phase 3: Real-time Events** - WebSocket streaming for agent responses
-- [ ] **Phase 4: File Handling** - Upload, storage, and download for attachments
+- [x] **Phase 3: Real-time Events** - WebSocket streaming for agent responses
+- [x] **Phase 4: File Handling** - Upload, storage, and download for attachments
 - [x] **Phase 5: OAuth Integration** - PKCE flows for Google, Slack, Microsoft
 - [ ] **Phase 6: Frontend Adaptation** - React app connected via HTTP/WebSocket
 
@@ -66,8 +66,8 @@ Plans:
 **Plans**: 2 plans
 
 Plans:
-- [ ] 03-01-PLAN.md - WebSocket event schemas, session-scoped tracking, delta batching, and SessionManager integration
-- [ ] 03-02-PLAN.md - Permission request/response flow, timeout handling, and config change notifications
+- [x] 03-01-PLAN.md - WebSocket event schemas, session-scoped tracking, delta batching, and SessionManager integration
+- [x] 03-02-PLAN.md - Permission request/response flow, timeout handling, and config change notifications
 
 ### Phase 4: File Handling
 **Goal**: Users can upload and download file attachments via browser
@@ -81,8 +81,8 @@ Plans:
 **Plans**: 2 plans
 
 Plans:
-- [ ] 04-01-PLAN.md - File upload endpoint with multipart handling and magic number validation
-- [ ] 04-02-PLAN.md - File download endpoint with path security and orphan cleanup
+- [x] 04-01-PLAN.md - File upload endpoint with multipart handling and magic number validation
+- [x] 04-02-PLAN.md - File download endpoint with path security and orphan cleanup
 
 ### Phase 5: OAuth Integration
 **Goal**: Users can authenticate with external services via browser OAuth flows
@@ -126,7 +126,7 @@ Phases execute in numeric order: 1 -> 2 -> 3 -> 4 -> 5 -> 6
 |-------|----------------|--------|-----------|
 | 1. Server Foundation | 2/2 | Complete | 2026-01-27 |
 | 2. Core API | 2/2 | Complete | 2026-01-28 |
-| 3. Real-time Events | 0/2 | Not started | - |
+| 3. Real-time Events | 2/2 | Complete | 2026-01-28 |
 | 4. File Handling | 2/2 | Complete | 2026-01-28 |
 | 5. OAuth Integration | 2/2 | Complete | 2026-01-28 |
 | 6. Frontend Adaptation | 0/2 | Not started | - |
