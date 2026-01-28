@@ -9,19 +9,19 @@ See: .planning/PROJECT.md (updated 2026-01-27)
 
 ## Current Position
 
-Phase: 5 of 6 (OAuth Integration)
-Plan: 2 of 2 in phase (phase complete)
-Status: Phase complete
-Last activity: 2026-01-28 - Completed Phase 5
+Phase: 6 of 6 (Frontend Adaptation)
+Plan: 1 of 2 in phase (in progress)
+Status: In progress
+Last activity: 2026-01-28 - Completed 06-01-PLAN.md
 
-Progress: [#########-] 83% (10/12 plans)
+Progress: [##########-] 92% (11/12 plans)
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 10
-- Average duration: 8.6 min
-- Total execution time: 86 min
+- Total plans completed: 11
+- Average duration: 8.2 min
+- Total execution time: 90 min
 
 **By Phase:**
 
@@ -32,10 +32,11 @@ Progress: [#########-] 83% (10/12 plans)
 | 03-real-time-events | 2/2 | 8 min | 4.0 min |
 | 04-file-handling | 2/2 | 44 min | 22.0 min |
 | 05-oauth-integration | 2/2 | 10 min | 5.0 min |
+| 06-frontend-adaptation | 1/2 | 4 min | 4.0 min |
 
 **Recent Trend:**
-- Last 5 plans: 4 min, 26 min, 18 min, 3 min, 7 min
-- Trend: Consistent fast execution for OAuth implementation
+- Last 5 plans: 26 min, 18 min, 3 min, 7 min, 4 min
+- Trend: Fast execution continuing for frontend transport layer
 
 *Updated after each plan completion*
 
@@ -83,6 +84,10 @@ Recent decisions affecting current work:
 - [05-02]: PKCE for Google/Microsoft, HTTP Basic auth for Slack (no PKCE support)
 - [05-02]: Cloudflare relay for Slack HTTPS requirement (agents.craft.do)
 - [05-02]: 5-minute token refresh buffer with automatic refresh via getValidOAuthToken()
+- [06-01]: WebSocket auto-reconnection: 5 max attempts with exponential backoff (1s, 2s, 4s, 8s, 16s)
+- [06-01]: Permission responses sent via WebSocket (not HTTP) for real-time delivery
+- [06-01]: WebElectronAPI excludes Electron-only methods (file dialogs, window management, auto-update, notifications)
+- [06-01]: Preferences transformed from server JSON to stringified format matching ElectronAPI
 
 ### Pending Todos
 
@@ -96,6 +101,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-01-28T05:20:39Z
-Stopped at: Completed 05-02-PLAN.md
+Last session: 2026-01-28T11:02:29Z
+Stopped at: Completed 06-01-PLAN.md
 Resume file: None
