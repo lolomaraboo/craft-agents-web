@@ -1,6 +1,7 @@
 import Fastify, { type FastifyInstance } from 'fastify'
 import { getConfig, type ServerConfig } from './lib/config.js'
 import { setupGracefulShutdown } from './lib/shutdown.js'
+import { setupConfigWatcher, stopConfigWatcher } from './lib/config-watcher.js'
 import corsPlugin from './plugins/cors.js'
 import { websocketPlugin } from './plugins/websocket.js'
 import apiRoutes from './routes/api/index.js'
@@ -40,6 +41,9 @@ export async function startServer(): Promise<void> {
   try {
     await fastify.listen({ port: config.port, host: config.host })
     fastify.log.info(`Server listening on ${config.host}:${config.port}`)
+
+    // Start config watcher after server is ready
+    setupConfigWatcher(fastify)
   } catch (err) {
     fastify.log.error(err)
     process.exit(1)
