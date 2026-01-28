@@ -2,11 +2,14 @@ import Fastify, { type FastifyInstance } from 'fastify'
 import { getConfig, type ServerConfig } from './lib/config.js'
 import { setupGracefulShutdown } from './lib/shutdown.js'
 import { setupConfigWatcher, stopConfigWatcher } from './lib/config-watcher.js'
+import { scheduleCleanup } from './lib/file-cleanup.js'
 import corsPlugin from './plugins/cors.js'
 import multipartPlugin from './plugins/multipart.js'
 import { websocketPlugin } from './plugins/websocket.js'
 import apiRoutes from './routes/api/index.js'
 import { staticPlugin } from './plugins/static.js'
+import { join } from 'path'
+import { homedir } from 'os'
 
 export async function createServer(config: ServerConfig): Promise<FastifyInstance> {
   const fastify = Fastify({
@@ -48,6 +51,11 @@ export async function startServer(): Promise<void> {
 
     // Start config watcher after server is ready
     setupConfigWatcher(fastify)
+
+    // Schedule orphaned file cleanup (runs every 24 hours)
+    const workspaceRootPath = join(homedir(), '.craft-agent')
+    scheduleCleanup(workspaceRootPath, 24)
+    fastify.log.info('Orphan cleanup scheduled (every 24 hours)')
   } catch (err) {
     fastify.log.error(err)
     process.exit(1)
