@@ -3,6 +3,7 @@ import { getConfig, type ServerConfig } from './lib/config.js'
 import { setupGracefulShutdown } from './lib/shutdown.js'
 import { setupConfigWatcher, stopConfigWatcher } from './lib/config-watcher.js'
 import corsPlugin from './plugins/cors.js'
+import multipartPlugin from './plugins/multipart.js'
 import { websocketPlugin } from './plugins/websocket.js'
 import apiRoutes from './routes/api/index.js'
 import { staticPlugin } from './plugins/static.js'
@@ -19,6 +20,9 @@ export async function createServer(config: ServerConfig): Promise<FastifyInstanc
 
   // Register CORS plugin (must be registered before websocket plugin)
   await fastify.register(corsPlugin)
+
+  // Register multipart plugin (must be registered before API routes)
+  await fastify.register(multipartPlugin)
 
   // Register WebSocket plugin (must be registered before static plugin)
   await fastify.register(websocketPlugin)
