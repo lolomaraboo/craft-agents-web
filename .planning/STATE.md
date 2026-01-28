@@ -10,28 +10,28 @@ See: .planning/PROJECT.md (updated 2026-01-27)
 ## Current Position
 
 Phase: 2 of 6 (Core API)
-Plan: 1 of 3 in current phase
+Plan: 2 of 3 in current phase
 Status: In progress
-Last activity: 2026-01-28 - Completed 02-01-PLAN.md
+Last activity: 2026-01-28 - Completed 02-02-PLAN.md
 
-Progress: [###-------] 25% (3/12 plans)
+Progress: [####------] 33% (4/12 plans)
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 3
-- Average duration: 6.3 min
-- Total execution time: 19 min
+- Total plans completed: 4
+- Average duration: 6.0 min
+- Total execution time: 24 min
 
 **By Phase:**
 
 | Phase | Plans | Total | Avg/Plan |
 |-------|-------|-------|----------|
 | 01-server-foundation | 2/2 | 9 min | 4.5 min |
-| 02-core-api | 1/3 | 10 min | 10 min |
+| 02-core-api | 2/3 | 15 min | 7.5 min |
 
 **Recent Trend:**
-- Last 5 plans: 4 min, 5 min, 10 min
+- Last 5 plans: 4 min, 5 min, 10 min, 5 min
 - Trend: Stable
 
 *Updated after each plan completion*
@@ -55,6 +55,9 @@ Recent decisions affecting current work:
 - [02-01]: CORS only enabled in development mode (production uses same origin)
 - [02-01]: SessionManager stubs return predictable mock data (real implementation in Phase 3)
 - [02-01]: HTTP 202 Accepted for message sending (async processing in Phase 3)
+- [02-02]: Direct @craft-agent/shared imports for workspace operations (same as Electron IPC)
+- [02-02]: Credential API exposes metadata only, never values (security)
+- [02-02]: Placeholder endpoints return { data: [] } for future implementation
 
 ### Pending Todos
 
@@ -66,6 +69,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-01-28T00:26:20Z
-Stopped at: Completed 02-01-PLAN.md
+Last session: 2026-01-28T01:22:26Z
+Stopped at: Completed 02-02-PLAN.md
 Resume file: None
