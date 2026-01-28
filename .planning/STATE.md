@@ -10,18 +10,18 @@ See: .planning/PROJECT.md (updated 2026-01-27)
 ## Current Position
 
 Phase: 5 of 6 (OAuth Integration)
-Plan: 1 of 4 in phase
+Plan: 2 of 4 in phase
 Status: In progress
-Last activity: 2026-01-28 - Completed 05-01-PLAN.md
+Last activity: 2026-01-28 - Completed 05-02-PLAN.md
 
-Progress: [#########-] 75% (9/12 plans)
+Progress: [#########-] 83% (10/12 plans)
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 9
-- Average duration: 8.8 min
-- Total execution time: 79 min
+- Total plans completed: 10
+- Average duration: 8.6 min
+- Total execution time: 86 min
 
 **By Phase:**
 
@@ -31,11 +31,11 @@ Progress: [#########-] 75% (9/12 plans)
 | 02-core-api | 2/2 | 15 min | 7.5 min |
 | 03-real-time-events | 2/2 | 8 min | 4.0 min |
 | 04-file-handling | 2/2 | 44 min | 22.0 min |
-| 05-oauth-integration | 1/4 | 3 min | 3.0 min |
+| 05-oauth-integration | 2/4 | 10 min | 5.0 min |
 
 **Recent Trend:**
-- Last 5 plans: 4 min, 26 min, 18 min, 3 min
-- Trend: Fast completion for infrastructure setup (Phase 5-01)
+- Last 5 plans: 4 min, 26 min, 18 min, 3 min, 7 min
+- Trend: Consistent fast execution for OAuth implementation
 
 *Updated after each plan completion*
 
@@ -79,6 +79,10 @@ Recent decisions affecting current work:
 - [05-01]: State manager uses crypto.randomBytes(16) for CSRF protection
 - [05-01]: 5-minute state expiry with 60-second cleanup interval
 - [05-01]: TypeBox union type for OAuthCallbackQuery (handles success/error cases)
+- [05-02]: source_oauth credential type for all OAuth tokens (not provider-specific types)
+- [05-02]: PKCE for Google/Microsoft, HTTP Basic auth for Slack (no PKCE support)
+- [05-02]: Cloudflare relay for Slack HTTPS requirement (agents.craft.do)
+- [05-02]: 5-minute token refresh buffer with automatic refresh via getValidOAuthToken()
 
 ### Pending Todos
 
@@ -92,6 +96,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-01-28T05:09:10Z
-Stopped at: Completed 05-01-PLAN.md
+Last session: 2026-01-28T05:20:39Z
+Stopped at: Completed 05-02-PLAN.md
 Resume file: None
