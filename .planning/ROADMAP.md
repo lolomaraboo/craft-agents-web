@@ -63,11 +63,11 @@ Plans:
   3. Browser can respond to permission requests via WebSocket
   4. Browser receives config change notifications when server config changes
   5. Browser reconnects automatically and maintains session context after disconnect
-**Plans**: TBD
+**Plans**: 2 plans
 
 Plans:
-- [ ] 03-01: Event broadcasting and session-scoped filtering
-- [ ] 03-02: Permission flow and reconnection handling
+- [ ] 03-01-PLAN.md - WebSocket event schemas, session-scoped tracking, delta batching, and SessionManager integration
+- [ ] 03-02-PLAN.md - Permission request/response flow, timeout handling, and config change notifications
 
 ### Phase 4: File Handling
 **Goal**: Users can upload and download file attachments via browser
