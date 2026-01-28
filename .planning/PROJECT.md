@@ -28,19 +28,21 @@ Users can interact with Claude agents from any browser, maintaining **100% featu
 - ✓ File attachments in messages — existing
 - ✓ Custom skills per workspace — existing
 
+<!-- v1.0 Web Foundation (shipped 2026-01-28) -->
+
+- ✓ Fastify HTTP server replacing Electron main process — v1.0
+- ✓ WebSocket server for real-time event streaming — v1.0
+- ✓ HTTP API endpoints for all IPC operations — v1.0 (25+ endpoints)
+- ✓ React frontend adapted from renderer (fetch/WebSocket instead of IPC) — v1.0 (infrastructure)
+- ✓ File upload API for attachments (browser → server) — v1.0
+- ✓ Server-side session management without Electron window context — v1.0
+- ✓ OAuth callback handling in web context — v1.0 (Google, Slack, Microsoft)
+- ✓ Static file serving for React app — v1.0
+- ✓ Development server with hot reload — v1.0
+
 ### Active
 
-<!-- New requirements for web transformation -->
-
-- [ ] Express/Fastify HTTP server replacing Electron main process
-- [ ] WebSocket server for real-time event streaming
-- [ ] HTTP API endpoints for all IPC operations
-- [ ] React frontend adapted from renderer (fetch/WebSocket instead of IPC)
-- [ ] File upload API for attachments (browser → server)
-- [ ] Server-side session management without Electron window context
-- [ ] OAuth callback handling in web context
-- [ ] Static file serving for React app
-- [ ] Development server with hot reload
+<!-- Next milestone requirements -->
 
 ### Out of Scope
 
@@ -101,12 +103,16 @@ Users can interact with Claude agents from any browser, maintaining **100% featu
 
 | Decision | Rationale | Outcome |
 |----------|-----------|---------|
-| WebSockets over SSE | Need bidirectional communication for permission requests, abort signals | — Pending |
-| Keep file-based storage | Avoid database dependency, maintain config compatibility with Electron | — Pending |
-| Single app directory | Create `apps/web/` alongside `apps/electron/` | — Pending |
-| Adapter pattern for IPC | Minimize changes to renderer code, swap IPC→HTTP at boundary | — Pending |
-| Fastify over Express | 2-3x faster for JSON-heavy streaming, TypeScript-first | — Pending |
-| ws library for WebSocket | Fastest, simplest WebSocket library | — Pending |
+| WebSockets over SSE | Need bidirectional communication for permission requests, abort signals | ✓ Good - Permission flow and reconnection working well |
+| Keep file-based storage | Avoid database dependency, maintain config compatibility with Electron | ✓ Good - Maintains compatibility, cleanup scheduler works |
+| Single app directory | Create `apps/web/` alongside `apps/electron/` | ✓ Good - Clean separation, monorepo structure preserved |
+| Adapter pattern for IPC | Minimize changes to renderer code, swap IPC→HTTP at boundary | ✓ Good - HttpAdapter provides drop-in replacement |
+| Fastify over Express | 2-3x faster for JSON-heavy streaming, TypeScript-first | ✓ Good - Plugin system and TypeBox integration excellent |
+| @fastify/websocket | Fastify-native WebSocket integration | ✓ Good - Seamless integration with server lifecycle |
+| TypeBox for validation | Better Fastify integration than Zod | ✓ Good - Runtime validation with type inference |
+| Magic number file validation | Prevents MIME type spoofing | ✓ Good - Security improvement over extension checks |
+| PKCE for OAuth | Secure OAuth without client_secret | ✓ Good - Google and Microsoft flows working |
+| 50ms delta batching | Balance latency and message overhead | ✓ Good - Reduces WebSocket traffic during streaming |
 
 ---
-*Last updated: 2026-01-27 after milestone v1.0 started*
+*Last updated: 2026-01-28 after v1.0 milestone completion*
