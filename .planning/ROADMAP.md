@@ -78,11 +78,11 @@ Plans:
   2. Uploaded files are stored on server filesystem in configured location
   3. User can download previously uploaded attachments
   4. Orphaned files are cleaned up automatically
-**Plans**: TBD
+**Plans**: 2 plans
 
 Plans:
-- [ ] 04-01: File upload and storage endpoints
-- [ ] 04-02: File download and cleanup
+- [ ] 04-01-PLAN.md - File upload endpoint with multipart handling and magic number validation
+- [ ] 04-02-PLAN.md - File download endpoint with path security and orphan cleanup
 
 ### Phase 5: OAuth Integration
 **Goal**: Users can authenticate with external services via browser OAuth flows
@@ -127,7 +127,7 @@ Phases execute in numeric order: 1 -> 2 -> 3 -> 4 -> 5 -> 6
 | 1. Server Foundation | 2/2 | Complete | 2026-01-27 |
 | 2. Core API | 2/2 | Complete | 2026-01-28 |
 | 3. Real-time Events | 0/2 | Not started | - |
-| 4. File Handling | 0/2 | Not started | - |
+| 4. File Handling | 0/2 | Planned | - |
 | 5. OAuth Integration | 0/2 | Not started | - |
 | 6. Frontend Adaptation | 0/2 | Not started | - |
 
