@@ -5,23 +5,23 @@
 See: .planning/PROJECT.md (updated 2026-01-27)
 
 **Core value:** Browser-based Claude agent access with 100% feature parity
-**Current focus:** Phase 3 - Real-time Events (Next)
+**Current focus:** Phase 4 - File Handling (In Progress)
 
 ## Current Position
 
-Phase: 3 of 6 (Real-time Events)
-Plan: 2 of 2 in phase (phase complete)
-Status: Phase complete
-Last activity: 2026-01-28 - Completed 03-02-PLAN.md
+Phase: 4 of 6 (File Handling)
+Plan: 1 of 3 in phase (in progress)
+Status: In progress
+Last activity: 2026-01-28 - Completed 04-01-PLAN.md
 
-Progress: [######----] 50% (6/12 plans)
+Progress: [#######---] 58% (7/12 plans)
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 6
-- Average duration: 5.3 min
-- Total execution time: 32 min
+- Total plans completed: 7
+- Average duration: 7.3 min
+- Total execution time: 58 min
 
 **By Phase:**
 
@@ -30,10 +30,11 @@ Progress: [######----] 50% (6/12 plans)
 | 01-server-foundation | 2/2 | 9 min | 4.5 min |
 | 02-core-api | 2/2 | 15 min | 7.5 min |
 | 03-real-time-events | 2/2 | 8 min | 4.0 min |
+| 04-file-handling | 1/3 | 26 min | 26.0 min |
 
 **Recent Trend:**
-- Last 5 plans: 10 min, 5 min, 4 min, 4 min
-- Trend: Consistent, efficient execution
+- Last 5 plans: 5 min, 4 min, 4 min, 26 min
+- Trend: Phase 4-01 took longer (multi-component implementation)
 
 *Updated after each plan completion*
 
@@ -66,6 +67,10 @@ Recent decisions affecting current work:
 - [03-02]: 60-second permission timeout (balance user decision time vs blocking agent)
 - [03-02]: Placeholder workspace ID "web-server" for ConfigWatcher (only watches global files)
 - [03-02]: Graceful fallback for config watcher failures (non-critical feature)
+- [04-01]: Use request.parts() async iterator for multipart uploads (memory efficient)
+- [04-01]: Magic number validation with file-type library (security - prevents MIME spoofing)
+- [04-01]: UUID-prefixed filenames prevent collisions ({uuid}-{original-name})
+- [04-01]: Hardcoded ~/.craft-agent workspace path for Phase 4 (will be wired properly later)
 
 ### Pending Todos
 
@@ -73,10 +78,13 @@ None yet.
 
 ### Blockers/Concerns
 
-None yet.
+**Phase 04:**
+- Image resizing needed before Claude API submission (20MB raw → API limits)
+- Orphan file cleanup not yet implemented (files accumulate if never attached to messages)
+- Workspace context currently hardcoded to ~/.craft-agent (needs multi-workspace support)
 
 ## Session Continuity
 
-Last session: 2026-01-28T02:19:25Z
-Stopped at: Completed 03-02-PLAN.md
+Last session: 2026-01-28T03:16:21Z
+Stopped at: Completed 04-01-PLAN.md
 Resume file: None
