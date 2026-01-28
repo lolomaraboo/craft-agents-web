@@ -5,32 +5,33 @@
 See: .planning/PROJECT.md (updated 2026-01-27)
 
 **Core value:** Browser-based Claude agent access with 100% feature parity
-**Current focus:** Phase 1 - Server Foundation (Complete)
+**Current focus:** Phase 2 - Core API (In Progress)
 
 ## Current Position
 
-Phase: 1 of 6 (Server Foundation)
-Plan: 2 of 2 in current phase (PHASE COMPLETE)
-Status: Phase complete - ready for Phase 2
-Last activity: 2026-01-27 - Completed 01-02-PLAN.md
+Phase: 2 of 6 (Core API)
+Plan: 1 of 3 in current phase
+Status: In progress
+Last activity: 2026-01-28 - Completed 02-01-PLAN.md
 
-Progress: [##--------] 17% (2/12 plans)
+Progress: [###-------] 25% (3/12 plans)
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 2
-- Average duration: 4.5 min
-- Total execution time: 9 min
+- Total plans completed: 3
+- Average duration: 6.3 min
+- Total execution time: 19 min
 
 **By Phase:**
 
 | Phase | Plans | Total | Avg/Plan |
 |-------|-------|-------|----------|
 | 01-server-foundation | 2/2 | 9 min | 4.5 min |
+| 02-core-api | 1/3 | 10 min | 10 min |
 
 **Recent Trend:**
-- Last 5 plans: 4 min, 5 min
+- Last 5 plans: 4 min, 5 min, 10 min
 - Trend: Stable
 
 *Updated after each plan completion*
@@ -50,6 +51,10 @@ Recent decisions affecting current work:
 - [01-02]: Set NODE_ENV=development explicitly (bun defaults to production)
 - [01-02]: Excluded client code from main tsconfig (Vite handles client TypeScript)
 - [01-02]: Static plugin uses SPA fallback for non-API/non-WS GET requests
+- [02-01]: TypeBox over Zod for runtime validation (better Fastify integration)
+- [02-01]: CORS only enabled in development mode (production uses same origin)
+- [02-01]: SessionManager stubs return predictable mock data (real implementation in Phase 3)
+- [02-01]: HTTP 202 Accepted for message sending (async processing in Phase 3)
 
 ### Pending Todos
 
@@ -61,6 +66,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-01-27T21:06:50Z
-Stopped at: Completed 01-02-PLAN.md (Phase 1 complete)
+Last session: 2026-01-28T00:26:20Z
+Stopped at: Completed 02-01-PLAN.md
 Resume file: None
