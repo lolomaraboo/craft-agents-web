@@ -1,17 +1,16 @@
-import fp from 'fastify-plugin'
 import type { FastifyPluginAsync } from 'fastify'
 import { URL } from 'url'
 import { randomBytes, createHash } from 'crypto'
-import { oauthStateManager } from '../../lib/oauth-state.js'
+import { oauthStateManager } from '../../../lib/oauth-state.js'
 import {
   OAuthStartQuery,
   type OAuthStartQueryType,
   OAuthStartResponse,
   OAuthCallbackQuery
-} from '../../schemas/oauth.js'
+} from '../../../schemas/oauth.js'
 import { MICROSOFT_SERVICE_SCOPES, getMicrosoftScopes, refreshMicrosoftToken } from '@craft-agent/shared/auth'
 import { getCredentialManager } from '@craft-agent/shared/credentials'
-import { getConfig } from '../../lib/config.js'
+import { getConfig } from '../../../lib/config.js'
 
 // Microsoft OAuth configuration
 const MICROSOFT_CLIENT_ID = process.env.MICROSOFT_OAUTH_CLIENT_ID || ''
@@ -33,7 +32,7 @@ function generatePKCE(): { verifier: string; challenge: string } {
  * Provides /microsoft/start and /microsoft/callback endpoints for OAuth flow
  * Uses PKCE for public client security
  */
-const microsoftOAuthRoutes: FastifyPluginAsync = async (fastify) => {
+export const microsoftOAuthRoutes: FastifyPluginAsync = async (fastify) => {
   /**
    * GET /oauth/microsoft/start
    * Initiates Microsoft OAuth flow - returns authorization URL
@@ -269,7 +268,3 @@ const microsoftOAuthRoutes: FastifyPluginAsync = async (fastify) => {
     }
   )
 }
-
-export default fp(microsoftOAuthRoutes, {
-  name: 'microsoft-oauth-routes'
-})

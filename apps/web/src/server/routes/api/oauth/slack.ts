@@ -1,17 +1,16 @@
-import fp from 'fastify-plugin'
 import type { FastifyPluginAsync } from 'fastify'
 import { URL } from 'url'
 import { randomBytes } from 'crypto'
-import { oauthStateManager } from '../../lib/oauth-state.js'
+import { oauthStateManager } from '../../../lib/oauth-state.js'
 import {
   OAuthStartQuery,
   type OAuthStartQueryType,
   OAuthStartResponse,
   OAuthCallbackQuery
-} from '../../schemas/oauth.js'
+} from '../../../schemas/oauth.js'
 import { SLACK_SERVICE_SCOPES, getSlackScopes, refreshSlackToken } from '@craft-agent/shared/auth'
 import { getCredentialManager } from '@craft-agent/shared/credentials'
-import { getConfig } from '../../lib/config.js'
+import { getConfig } from '../../../lib/config.js'
 
 // Slack OAuth configuration
 const SLACK_CLIENT_ID = process.env.SLACK_OAUTH_CLIENT_ID || ''
@@ -24,7 +23,7 @@ const SLACK_TOKEN_URL = 'https://slack.com/api/oauth.v2.access'
  * Provides /slack/start and /slack/callback endpoints for OAuth flow
  * Uses HTTPS relay through Cloudflare Worker for callback
  */
-const slackOAuthRoutes: FastifyPluginAsync = async (fastify) => {
+export const slackOAuthRoutes: FastifyPluginAsync = async (fastify) => {
   /**
    * GET /oauth/slack/start
    * Initiates Slack OAuth flow - returns authorization URL
@@ -233,7 +232,3 @@ const slackOAuthRoutes: FastifyPluginAsync = async (fastify) => {
     }
   )
 }
-
-export default fp(slackOAuthRoutes, {
-  name: 'slack-oauth-routes'
-})

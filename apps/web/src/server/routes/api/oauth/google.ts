@@ -1,17 +1,16 @@
-import fp from 'fastify-plugin'
 import type { FastifyPluginAsync } from 'fastify'
 import { URL } from 'url'
 import { randomBytes, createHash } from 'crypto'
-import { oauthStateManager } from '../../lib/oauth-state.js'
+import { oauthStateManager } from '../../../lib/oauth-state.js'
 import {
   OAuthStartQuery,
   type OAuthStartQueryType,
   OAuthStartResponse,
   OAuthCallbackQuery
-} from '../../schemas/oauth.js'
+} from '../../../schemas/oauth.js'
 import { GOOGLE_SERVICE_SCOPES, getGoogleScopes, refreshGoogleToken } from '@craft-agent/shared/auth'
 import { getCredentialManager } from '@craft-agent/shared/credentials'
-import { getConfig } from '../../lib/config.js'
+import { getConfig } from '../../../lib/config.js'
 
 // Google OAuth configuration
 const GOOGLE_CLIENT_ID = process.env.GOOGLE_OAUTH_CLIENT_ID || ''
@@ -33,7 +32,7 @@ function generatePKCE(): { verifier: string; challenge: string } {
  * Google OAuth routes plugin
  * Provides /google/start and /google/callback endpoints for OAuth flow
  */
-const googleOAuthRoutes: FastifyPluginAsync = async (fastify) => {
+export const googleOAuthRoutes: FastifyPluginAsync = async (fastify) => {
   /**
    * GET /oauth/google/start
    * Initiates Google OAuth flow - returns authorization URL
@@ -265,7 +264,3 @@ const googleOAuthRoutes: FastifyPluginAsync = async (fastify) => {
     }
   )
 }
-
-export default fp(googleOAuthRoutes, {
-  name: 'google-oauth-routes'
-})
