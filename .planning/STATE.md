@@ -10,18 +10,18 @@ See: .planning/PROJECT.md (updated 2026-01-27)
 ## Current Position
 
 Phase: 4 of 6 (File Handling)
-Plan: 1 of 3 in phase (in progress)
+Plan: 2 of 3 in phase (in progress)
 Status: In progress
-Last activity: 2026-01-28 - Completed 04-01-PLAN.md
+Last activity: 2026-01-28 - Completed 04-02-PLAN.md
 
-Progress: [#######---] 58% (7/12 plans)
+Progress: [########--] 67% (8/12 plans)
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 7
-- Average duration: 7.3 min
-- Total execution time: 58 min
+- Total plans completed: 8
+- Average duration: 9.5 min
+- Total execution time: 76 min
 
 **By Phase:**
 
@@ -30,11 +30,11 @@ Progress: [#######---] 58% (7/12 plans)
 | 01-server-foundation | 2/2 | 9 min | 4.5 min |
 | 02-core-api | 2/2 | 15 min | 7.5 min |
 | 03-real-time-events | 2/2 | 8 min | 4.0 min |
-| 04-file-handling | 1/3 | 26 min | 26.0 min |
+| 04-file-handling | 2/3 | 44 min | 22.0 min |
 
 **Recent Trend:**
-- Last 5 plans: 5 min, 4 min, 4 min, 26 min
-- Trend: Phase 4-01 took longer (multi-component implementation)
+- Last 5 plans: 4 min, 4 min, 26 min, 18 min
+- Trend: Phase 4 plans longer due to new domain (file handling)
 
 *Updated after each plan completion*
 
@@ -71,6 +71,9 @@ Recent decisions affecting current work:
 - [04-01]: Magic number validation with file-type library (security - prevents MIME spoofing)
 - [04-01]: UUID-prefixed filenames prevent collisions ({uuid}-{original-name})
 - [04-01]: Hardcoded ~/.craft-agent workspace path for Phase 4 (will be wired properly later)
+- [04-02]: Path validation using resolve() and startsWith() for traversal protection
+- [04-02]: 24-hour grace period before deleting orphaned files
+- [04-02]: Cleanup scheduled every 24 hours starting at server startup
 
 ### Pending Todos
 
@@ -80,11 +83,10 @@ None yet.
 
 **Phase 04:**
 - Image resizing needed before Claude API submission (20MB raw → API limits)
-- Orphan file cleanup not yet implemented (files accumulate if never attached to messages)
 - Workspace context currently hardcoded to ~/.craft-agent (needs multi-workspace support)
 
 ## Session Continuity
 
-Last session: 2026-01-28T03:16:21Z
-Stopped at: Completed 04-01-PLAN.md
+Last session: 2026-01-28T03:46:57Z
+Stopped at: Completed 04-02-PLAN.md
 Resume file: None
