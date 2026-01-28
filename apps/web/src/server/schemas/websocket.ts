@@ -91,6 +91,15 @@ export const PermissionRequestEvent = Type.Object({
 })
 
 /**
+ * Permission timeout event - permission request timed out
+ */
+export const PermissionTimeoutEvent = Type.Object({
+  type: Type.Literal('permission_timeout'),
+  sessionId: Type.String(),
+  requestId: Type.String()
+})
+
+/**
  * Config changed event - global broadcast when config/theme changes
  */
 export const ConfigChangedEvent = Type.Object({
@@ -109,6 +118,7 @@ export const SessionEvent = Type.Union([
   CompleteEvent,
   ErrorEvent,
   PermissionRequestEvent,
+  PermissionTimeoutEvent,
   ConfigChangedEvent
 ])
 

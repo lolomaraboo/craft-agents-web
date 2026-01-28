@@ -8,8 +8,20 @@ import type { AgentEvent } from '@craft-agent/core/types'
  * Phase 2: Stub implementation with predictable mock responses
  * Phase 3: Wire up real SessionManager with event streaming
  */
+
+/** Permission timeout constant: 60 seconds */
+const PERMISSION_TIMEOUT_MS = 60000
+
+/** Pending permission request tracking */
+interface PendingPermission {
+  resolve: ((allowed: boolean) => void) | null
+  sessionId: string
+  timeout: NodeJS.Timeout
+}
+
 export class SessionManager {
   private fastify: FastifyInstance
+  private pendingPermissions: Map<string, PendingPermission> = new Map()
 
   constructor(fastify: FastifyInstance) {
     this.fastify = fastify
@@ -175,6 +187,18 @@ export class SessionManager {
         break
 
       case 'permission_request':
+        // Store pending permission with timeout
+        const timeoutId = setTimeout(() => {
+          this.autoRejectPermission(event.requestId, sessionId)
+        }, PERMISSION_TIMEOUT_MS)
+
+        this.pendingPermissions.set(event.requestId, {
+          resolve: null, // Will be set by CraftAgent callback
+          sessionId,
+          timeout: timeoutId
+        })
+
+        // Broadcast to clients
         this.fastify.broadcastToSession(sessionId, {
           type: 'permission_request',
           sessionId,
@@ -213,6 +237,43 @@ export class SessionManager {
         yield { type: 'complete' } as AgentEvent
       }
     }
+  }
+
+  /**
+   * Respond to a permission request
+   * Called when user approves/denies a permission request
+   */
+  respondToPermission(requestId: string, allowed: boolean, alwaysAllow?: boolean): void {
+    const pending = this.pendingPermissions.get(requestId)
+    if (!pending) {
+      this.fastify.log.warn({ requestId }, 'Permission response for unknown request')
+      return
+    }
+
+    clearTimeout(pending.timeout)
+    this.pendingPermissions.delete(requestId)
+
+    // Forward to CraftAgent (when properly wired)
+    // For now, log the response
+    this.fastify.log.info({ requestId, allowed, alwaysAllow }, 'Permission response received')
+  }
+
+  /**
+   * Auto-reject permission request when timeout expires
+   */
+  private autoRejectPermission(requestId: string, sessionId: string): void {
+    const pending = this.pendingPermissions.get(requestId)
+    if (!pending) return
+
+    this.pendingPermissions.delete(requestId)
+    this.fastify.log.warn({ requestId, sessionId }, 'Permission request timed out, auto-rejecting')
+
+    // Broadcast timeout notification
+    this.fastify.broadcastToSession(sessionId, {
+      type: 'permission_timeout',
+      sessionId,
+      requestId
+    })
   }
 
   /**

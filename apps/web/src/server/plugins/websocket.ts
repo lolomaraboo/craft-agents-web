@@ -41,8 +41,13 @@ async function websocketPluginImpl(fastify: FastifyInstance): Promise<void> {
         } else if (message.type === 'unsubscribe') {
           unsubscribeFromSession(message.sessionId, socket)
         } else if (message.type === 'permission_response') {
-          // Permission response handling will be implemented in Phase 3-02
-          fastify.log.debug({ requestId: message.requestId, allowed: message.allowed }, 'Permission response received')
+          if (message.requestId) {
+            fastify.sessionManager.respondToPermission(
+              message.requestId,
+              message.allowed ?? false,
+              message.alwaysAllow
+            )
+          }
         } else {
           fastify.log.debug({ messageType: (message as { type: string }).type }, 'Unknown WebSocket message type')
         }
@@ -82,5 +87,6 @@ declare module 'fastify' {
     broadcastGlobal: (event: SessionEvent) => void
     queueDelta: (sessionId: string, delta: string, turnId?: string) => void
     flushDelta: (sessionId: string) => void
+    sessionManager: import('../lib/session-manager.js').SessionManager
   }
 }
