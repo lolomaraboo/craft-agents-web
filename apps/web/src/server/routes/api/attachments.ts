@@ -1,11 +1,12 @@
 import type { FastifyPluginAsync } from 'fastify'
 import type { TypeBoxTypeProvider } from '@fastify/type-provider-typebox'
 import { Type } from '@sinclair/typebox'
-import { join } from 'path'
+import { join, resolve, dirname } from 'path'
 import { writeFile } from 'fs/promises'
 import { randomUUID } from 'crypto'
 import { homedir } from 'os'
-import { getSessionAttachmentsPath, ensureAttachmentsDir } from '@craft-agent/shared/sessions'
+import { createReadStream, existsSync } from 'fs'
+import { getSessionAttachmentsPath, ensureAttachmentsDir, loadSession } from '@craft-agent/shared/sessions'
 import { validateFileUpload } from '../../lib/file-validator.js'
 import { StoredAttachmentSchema, UploadResponseSchema } from '../../schemas/attachment.js'
 import { ErrorResponseSchema } from '../../schemas/common.js'
@@ -90,6 +91,91 @@ export const attachmentsRoutes: FastifyPluginAsync = async (fastify) => {
         fastify.log.error(error)
         return reply.code(500).send({
           error: 'Failed to upload attachments',
+          details: error instanceof Error ? error.message : String(error)
+        })
+      }
+    }
+  )
+
+  // GET /api/sessions/:sessionId/attachments/:attachmentId - Download file
+  server.get(
+    '/sessions/:sessionId/attachments/:attachmentId',
+    {
+      schema: {
+        params: Type.Object({
+          sessionId: Type.String(),
+          attachmentId: Type.String(),
+        }),
+        querystring: Type.Object({
+          download: Type.Optional(Type.String()),
+        }),
+        // No response schema for 200 - we're streaming binary data
+        response: {
+          404: ErrorResponseSchema,
+          403: ErrorResponseSchema,
+          500: ErrorResponseSchema,
+        },
+      },
+    },
+    async (request, reply) => {
+      try {
+        const { sessionId, attachmentId } = request.params
+
+        // Load session to get attachment metadata
+        const session = loadSession(WORKSPACE_ROOT_PATH, sessionId)
+        if (!session) {
+          return reply.code(404).send({ error: 'Session not found' })
+        }
+
+        // Search session.messages for attachment with matching ID
+        let attachment: {
+          id: string
+          type: string
+          name: string
+          mimeType: string
+          size: number
+          storedPath: string
+        } | undefined
+
+        for (const message of session.messages) {
+          if (message.attachments) {
+            attachment = message.attachments.find(a => a.id === attachmentId)
+            if (attachment) break
+          }
+        }
+
+        if (!attachment) {
+          return reply.code(404).send({ error: 'Attachment not found' })
+        }
+
+        // Validate file exists
+        if (!existsSync(attachment.storedPath)) {
+          return reply.code(404).send({ error: 'File not found on disk' })
+        }
+
+        // Security check - validate path is within session attachments directory
+        const attachmentsDir = getSessionAttachmentsPath(WORKSPACE_ROOT_PATH, sessionId)
+        const resolvedPath = resolve(attachment.storedPath)
+        if (!resolvedPath.startsWith(resolve(attachmentsDir))) {
+          return reply.code(403).send({ error: 'Access denied' })
+        }
+
+        // Set Content-Type header from attachment.mimeType
+        reply.header('Content-Type', attachment.mimeType)
+
+        // Set Content-Disposition based on ?download query param
+        const disposition = request.query.download !== undefined
+          ? `attachment; filename="${attachment.name}"`
+          : `inline; filename="${attachment.name}"`
+        reply.header('Content-Disposition', disposition)
+
+        // Stream file
+        const stream = createReadStream(attachment.storedPath)
+        return reply.send(stream)
+      } catch (error) {
+        fastify.log.error(error)
+        return reply.code(500).send({
+          error: 'Failed to download attachment',
           details: error instanceof Error ? error.message : String(error)
         })
       }
