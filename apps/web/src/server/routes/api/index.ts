@@ -2,6 +2,7 @@ import fp from 'fastify-plugin'
 import type { FastifyPluginAsync } from 'fastify'
 import { SessionManager } from '../../lib/session-manager.js'
 import { sessionsRoutes } from './sessions.js'
+import { attachmentsRoutes } from './attachments.js'
 import { workspacesRoutes } from './workspaces.js'
 import { configRoutes } from './config.js'
 import { credentialsRoutes } from './credentials.js'
@@ -22,6 +23,7 @@ const apiRoutes: FastifyPluginAsync = async (fastify) => {
 
   // Register all API routes under /api prefix
   await fastify.register(sessionsRoutes, { prefix: '/api' })      // from 02-01
+  await fastify.register(attachmentsRoutes, { prefix: '/api' })   // file uploads (04-01)
   await fastify.register(workspacesRoutes, { prefix: '/api' })    // workspace CRUD + settings
   await fastify.register(configRoutes, { prefix: '/api' })        // global config + preferences
   await fastify.register(credentialsRoutes, { prefix: '/api' })   // credential management (API-06)
