@@ -2,18 +2,16 @@ import type { FastifyInstance } from 'fastify'
 import fastifyWebsocket from '@fastify/websocket'
 import fp from 'fastify-plugin'
 import type { WebSocket } from 'ws'
-
-// Track active WebSocket clients
-const clients = new Set<WebSocket>()
-
-// Broadcast function to send message to all connected clients
-function broadcast(message: string): void {
-  for (const client of clients) {
-    if (client.readyState === 1) { // WebSocket.OPEN = 1
-      client.send(message)
-    }
-  }
-}
+import {
+  subscribeToSession,
+  unsubscribeFromSession,
+  cleanupSocket,
+  broadcastToSession,
+  broadcastGlobal,
+  queueDelta,
+  flushDelta
+} from '../lib/websocket-events.js'
+import type { ClientMessage, SessionEvent } from '../schemas/websocket.js'
 
 async function websocketPluginImpl(fastify: FastifyInstance): Promise<void> {
   // Register @fastify/websocket with maxPayload
@@ -23,8 +21,6 @@ async function websocketPluginImpl(fastify: FastifyInstance): Promise<void> {
 
   // WebSocket endpoint
   fastify.get('/ws', { websocket: true }, (socket, req) => {
-    // Add to clients set immediately (sync)
-    clients.add(socket)
     fastify.log.info({ clientId: req.id }, 'WebSocket client connected')
 
     // Send connection acknowledgment
@@ -36,27 +32,41 @@ async function websocketPluginImpl(fastify: FastifyInstance): Promise<void> {
     // Attach message handler synchronously (CRITICAL: avoid async trap from RESEARCH.md)
     socket.on('message', (data) => {
       try {
-        const message = JSON.parse(data.toString())
+        const message = JSON.parse(data.toString()) as ClientMessage
         fastify.log.debug({ clientId: req.id, message }, 'Received WebSocket message')
-        // Message handlers will be implemented in Phase 3
+
+        // Handle client messages
+        if (message.type === 'subscribe') {
+          subscribeToSession(message.sessionId, socket)
+        } else if (message.type === 'unsubscribe') {
+          unsubscribeFromSession(message.sessionId, socket)
+        } else if (message.type === 'permission_response') {
+          // Permission response handling will be implemented in Phase 3-02
+          fastify.log.debug({ requestId: message.requestId, allowed: message.allowed }, 'Permission response received')
+        } else {
+          fastify.log.debug({ messageType: (message as { type: string }).type }, 'Unknown WebSocket message type')
+        }
       } catch (err) {
         fastify.log.warn({ err, clientId: req.id }, 'Invalid WebSocket message format')
       }
     })
 
     socket.on('close', () => {
-      clients.delete(socket)
+      cleanupSocket(socket)
       fastify.log.info({ clientId: req.id }, 'WebSocket client disconnected')
     })
 
     socket.on('error', (err) => {
+      cleanupSocket(socket)
       fastify.log.error({ err, clientId: req.id }, 'WebSocket error')
-      clients.delete(socket)
     })
   })
 
-  // Decorate fastify with broadcast function for use by other plugins/routes
-  fastify.decorate('broadcast', broadcast)
+  // Decorate fastify with broadcast functions for use by other plugins/routes
+  fastify.decorate('broadcastToSession', broadcastToSession)
+  fastify.decorate('broadcastGlobal', broadcastGlobal)
+  fastify.decorate('queueDelta', queueDelta)
+  fastify.decorate('flushDelta', flushDelta)
 }
 
 // Export plugin wrapped with fastify-plugin for proper encapsulation
@@ -64,3 +74,13 @@ export const websocketPlugin = fp(websocketPluginImpl, {
   name: 'websocket-plugin',
   fastify: '5.x'
 })
+
+// TypeScript module augmentation for Fastify decorators
+declare module 'fastify' {
+  interface FastifyInstance {
+    broadcastToSession: (sessionId: string, event: SessionEvent) => void
+    broadcastGlobal: (event: SessionEvent) => void
+    queueDelta: (sessionId: string, delta: string, turnId?: string) => void
+    flushDelta: (sessionId: string) => void
+  }
+}

@@ -16,8 +16,8 @@ declare module 'fastify' {
 }
 
 const apiRoutes: FastifyPluginAsync = async (fastify) => {
-  // Decorate fastify with sessionManager instance
-  const sessionManager = new SessionManager()
+  // Decorate fastify with sessionManager instance (pass fastify for broadcast access)
+  const sessionManager = new SessionManager(fastify)
   fastify.decorate('sessionManager', sessionManager)
 
   // Register all API routes under /api prefix
