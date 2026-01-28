@@ -13,7 +13,7 @@ Transform the Electron desktop app into a self-hosted web application. The journ
 Decimal phases appear between their surrounding integers in numeric order.
 
 - [x] **Phase 1: Server Foundation** - Fastify HTTP server with WebSocket support
-- [ ] **Phase 2: Core API** - HTTP endpoints replacing IPC handlers
+- [x] **Phase 2: Core API** - HTTP endpoints replacing IPC handlers
 - [ ] **Phase 3: Real-time Events** - WebSocket streaming for agent responses
 - [ ] **Phase 4: File Handling** - Upload, storage, and download for attachments
 - [ ] **Phase 5: OAuth Integration** - PKCE flows for Google, Slack, Microsoft
@@ -50,8 +50,8 @@ Plans:
 **Plans**: 2 plans
 
 Plans:
-- [ ] 02-01-PLAN.md - Session CRUD, message, and abort endpoints with TypeBox validation
-- [ ] 02-02-PLAN.md - Workspace, config, MCP, and theme endpoints
+- [x] 02-01-PLAN.md - Session CRUD, message, and abort endpoints with TypeBox validation
+- [x] 02-02-PLAN.md - Workspace, config, MCP, and theme endpoints
 
 ### Phase 3: Real-time Events
 **Goal**: Browser receives real-time updates during agent interactions
@@ -125,7 +125,7 @@ Phases execute in numeric order: 1 -> 2 -> 3 -> 4 -> 5 -> 6
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. Server Foundation | 2/2 | Complete | 2026-01-27 |
-| 2. Core API | 0/2 | Not started | - |
+| 2. Core API | 2/2 | Complete | 2026-01-28 |
 | 3. Real-time Events | 0/2 | Not started | - |
 | 4. File Handling | 0/2 | Not started | - |
 | 5. OAuth Integration | 0/2 | Not started | - |
