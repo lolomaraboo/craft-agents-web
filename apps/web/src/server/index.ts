@@ -3,6 +3,7 @@ import { getConfig, type ServerConfig } from './lib/config.js'
 import { setupGracefulShutdown } from './lib/shutdown.js'
 import corsPlugin from './plugins/cors.js'
 import { websocketPlugin } from './plugins/websocket.js'
+import apiRoutes from './routes/api/index.js'
 import { staticPlugin } from './plugins/static.js'
 
 export async function createServer(config: ServerConfig): Promise<FastifyInstance> {
@@ -20,6 +21,9 @@ export async function createServer(config: ServerConfig): Promise<FastifyInstanc
 
   // Register WebSocket plugin (must be registered before static plugin)
   await fastify.register(websocketPlugin)
+
+  // Register API routes (after websocket, so /api routes don't conflict with /ws)
+  await fastify.register(apiRoutes)
 
   // Register static file serving plugin (disabled in dev mode - Vite handles frontend)
   await fastify.register(staticPlugin, { enabled: !config.isDev })
