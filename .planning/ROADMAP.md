@@ -16,7 +16,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 - [x] **Phase 2: Core API** - HTTP endpoints replacing IPC handlers
 - [ ] **Phase 3: Real-time Events** - WebSocket streaming for agent responses
 - [ ] **Phase 4: File Handling** - Upload, storage, and download for attachments
-- [ ] **Phase 5: OAuth Integration** - PKCE flows for Google, Slack, Microsoft
+- [x] **Phase 5: OAuth Integration** - PKCE flows for Google, Slack, Microsoft
 - [ ] **Phase 6: Frontend Adaptation** - React app connected via HTTP/WebSocket
 
 ## Phase Details
@@ -97,8 +97,8 @@ Plans:
 **Plans**: 2 plans
 
 Plans:
-- [ ] 05-01-PLAN.md - OAuth infrastructure (cookie plugin, state manager, TypeBox schemas)
-- [ ] 05-02-PLAN.md - Google, Slack, Microsoft OAuth routes with token storage
+- [x] 05-01-PLAN.md - OAuth infrastructure (cookie plugin, state manager, TypeBox schemas)
+- [x] 05-02-PLAN.md - Google, Slack, Microsoft OAuth routes with token storage
 
 ### Phase 6: Frontend Adaptation
 **Goal**: React application works identically to Electron version using HTTP/WebSocket transport
@@ -128,7 +128,7 @@ Phases execute in numeric order: 1 -> 2 -> 3 -> 4 -> 5 -> 6
 | 2. Core API | 2/2 | Complete | 2026-01-28 |
 | 3. Real-time Events | 0/2 | Not started | - |
 | 4. File Handling | 2/2 | Complete | 2026-01-28 |
-| 5. OAuth Integration | 0/2 | Planned | - |
+| 5. OAuth Integration | 2/2 | Complete | 2026-01-28 |
 | 6. Frontend Adaptation | 0/2 | Not started | - |
 
 ---

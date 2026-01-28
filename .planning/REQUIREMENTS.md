@@ -116,17 +116,17 @@ Which phases cover which requirements. Updated during roadmap creation.
 | RTCM-04 | Phase 3 | Pending |
 | RTCM-05 | Phase 3 | Pending |
 | RTCM-06 | Phase 3 | Pending |
-| FILE-01 | Phase 4 | Pending |
-| FILE-02 | Phase 4 | Pending |
-| FILE-03 | Phase 4 | Pending |
-| FILE-04 | Phase 4 | Pending |
-| AUTH-01 | Phase 5 | Pending |
-| AUTH-02 | Phase 5 | Pending |
-| AUTH-03 | Phase 5 | Pending |
-| AUTH-04 | Phase 5 | Pending |
-| AUTH-05 | Phase 5 | Pending |
-| AUTH-06 | Phase 5 | Pending |
-| AUTH-07 | Phase 5 | Pending |
+| FILE-01 | Phase 4 | Complete |
+| FILE-02 | Phase 4 | Complete |
+| FILE-03 | Phase 4 | Complete |
+| FILE-04 | Phase 4 | Complete |
+| AUTH-01 | Phase 5 | Complete |
+| AUTH-02 | Phase 5 | Complete |
+| AUTH-03 | Phase 5 | Complete |
+| AUTH-04 | Phase 5 | Complete |
+| AUTH-05 | Phase 5 | Complete |
+| AUTH-06 | Phase 5 | Complete |
+| AUTH-07 | Phase 5 | Complete |
 | FRNT-01 | Phase 6 | Pending |
 | FRNT-02 | Phase 6 | Pending |
 | FRNT-03 | Phase 6 | Pending |
@@ -141,4 +141,4 @@ Which phases cover which requirements. Updated during roadmap creation.
 
 ---
 *Requirements defined: 2026-01-27*
-*Last updated: 2026-01-27 after Phase 1 completion*
+*Last updated: 2026-01-28 after Phase 5 completion*
