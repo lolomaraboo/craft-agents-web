@@ -127,12 +127,12 @@ Which phases cover which requirements. Updated during roadmap creation.
 | AUTH-05 | Phase 5 | Complete |
 | AUTH-06 | Phase 5 | Complete |
 | AUTH-07 | Phase 5 | Complete |
-| FRNT-01 | Phase 6 | Pending |
-| FRNT-02 | Phase 6 | Pending |
-| FRNT-03 | Phase 6 | Pending |
-| FRNT-04 | Phase 6 | Pending |
-| FRNT-05 | Phase 6 | Pending |
-| FRNT-06 | Phase 6 | Pending |
+| FRNT-01 | Phase 6 | Complete |
+| FRNT-02 | Phase 6 | Complete |
+| FRNT-03 | Phase 6 | Complete |
+| FRNT-04 | Phase 6 | Complete |
+| FRNT-05 | Phase 6 | Complete |
+| FRNT-06 | Phase 6 | Complete |
 
 **Coverage:**
 - v1.0 requirements: 36 total
@@ -141,4 +141,4 @@ Which phases cover which requirements. Updated during roadmap creation.
 
 ---
 *Requirements defined: 2026-01-27*
-*Last updated: 2026-01-28 after Phase 5 completion*
+*Last updated: 2026-01-28 after Phase 6 completion*

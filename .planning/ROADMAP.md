@@ -17,7 +17,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 - [x] **Phase 3: Real-time Events** - WebSocket streaming for agent responses
 - [x] **Phase 4: File Handling** - Upload, storage, and download for attachments
 - [x] **Phase 5: OAuth Integration** - PKCE flows for Google, Slack, Microsoft
-- [ ] **Phase 6: Frontend Adaptation** - React app connected via HTTP/WebSocket
+- [x] **Phase 6: Frontend Adaptation** - React app connected via HTTP/WebSocket
 
 ## Phase Details
 
@@ -113,8 +113,8 @@ Plans:
 **Plans**: 2 plans
 
 Plans:
-- [ ] 06-01-PLAN.md - HTTP client adapter and WebSocket manager
-- [ ] 06-02-PLAN.md - Loading states, error boundaries, and bootstrap wiring
+- [x] 06-01-PLAN.md - HTTP client adapter and WebSocket manager
+- [x] 06-02-PLAN.md - Loading states, error boundaries, and bootstrap wiring
 
 ## Progress
 
@@ -129,7 +129,7 @@ Phases execute in numeric order: 1 -> 2 -> 3 -> 4 -> 5 -> 6
 | 3. Real-time Events | 2/2 | Complete | 2026-01-28 |
 | 4. File Handling | 2/2 | Complete | 2026-01-28 |
 | 5. OAuth Integration | 2/2 | Complete | 2026-01-28 |
-| 6. Frontend Adaptation | 0/2 | Planned | - |
+| 6. Frontend Adaptation | 2/2 | Complete | 2026-01-28 |
 
 ---
 *Roadmap created: 2026-01-27*
