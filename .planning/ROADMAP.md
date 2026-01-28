@@ -110,11 +110,11 @@ Plans:
   3. Loading states appear during async operations (no sync IPC assumptions)
   4. Network errors display gracefully via error boundaries
   5. All 148 React components render and function identically to Electron app
-**Plans**: TBD
+**Plans**: 2 plans
 
 Plans:
-- [ ] 06-01: HTTP client adapter and WebSocket manager
-- [ ] 06-02: Loading states, error boundaries, and component verification
+- [ ] 06-01-PLAN.md - HTTP client adapter and WebSocket manager
+- [ ] 06-02-PLAN.md - Loading states, error boundaries, and bootstrap wiring
 
 ## Progress
 
@@ -129,7 +129,7 @@ Phases execute in numeric order: 1 -> 2 -> 3 -> 4 -> 5 -> 6
 | 3. Real-time Events | 2/2 | Complete | 2026-01-28 |
 | 4. File Handling | 2/2 | Complete | 2026-01-28 |
 | 5. OAuth Integration | 2/2 | Complete | 2026-01-28 |
-| 6. Frontend Adaptation | 0/2 | Not started | - |
+| 6. Frontend Adaptation | 0/2 | Planned | - |
 
 ---
 *Roadmap created: 2026-01-27*
