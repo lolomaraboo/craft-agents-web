@@ -135,7 +135,7 @@ function mergeThemes(
 export function resolveTheme(
   app?: ThemeOverrides
 ): ThemeOverrides {
-  return mergeThemes(undefined, app) || {};
+  return mergeThemes(DEFAULT_THEME, app);
 }
 
 /**

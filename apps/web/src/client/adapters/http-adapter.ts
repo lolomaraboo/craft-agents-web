@@ -231,6 +231,15 @@ export class HttpAdapter implements WebElectronAPI {
     return data.presets || []
   }
 
+  async loadPresetTheme(themeId: string): Promise<any | null> {
+    try {
+      const response = await this.fetch(`/api/theme/presets/${themeId}`)
+      return response.json()
+    } catch {
+      return null
+    }
+  }
+
   async getAppTheme(): Promise<ThemeOverrides | null> {
     try {
       const response = await this.fetch('/api/theme')

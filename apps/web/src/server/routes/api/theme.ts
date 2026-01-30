@@ -86,3 +86,32 @@ export const themeRoutes: FastifyPluginAsync = async (fastify) => {
     return { presets: [] }
   })
 }
+
+  // GET /api/theme/presets/:themeId - Get specific preset theme
+  fastify.get<{
+    Params: { themeId: string }
+  }>('/theme/presets/:themeId', {
+    schema: {
+      params: {
+        type: 'object',
+        properties: {
+          themeId: { type: 'string' },
+        },
+        required: ['themeId'],
+      },
+      response: {
+        200: {
+          type: 'object',
+          nullable: true,
+        },
+      },
+    },
+  }, async (request) => {
+    const { themeId } = request.params
+    
+    // For now, return null - no preset themes loaded
+    // In production, this would load from ~/.craft-agent/themes/
+    fastify.log.info('Loading preset theme:', themeId)
+    return null
+  })
+}
