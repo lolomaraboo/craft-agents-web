@@ -62,6 +62,7 @@ import {
 import { sessionMetaMapAtom, updateSessionMetaAtom, type SessionMeta } from '@/atoms/sessions'
 import { sourcesAtom } from '@/atoms/sources'
 import { skillsAtom } from '@/atoms/skills'
+// Removed platformAPI import - using window.electronAPI directly
 
 // Re-export routes for convenience
 export { routes }

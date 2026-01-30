@@ -54,7 +54,7 @@ export class HttpAdapter {
     await this.fetch(`/api/sessions/${sessionId}`, { method: 'DELETE' })
   }
 
-  async sendMessage(sessionId: string, message: string, attachments?: FileAttachment[], storedAttachments?: StoredAttachment[], options?: SendMessageOptions): Promise<void> {
+  async sendMessage(sessionId: string, message: string, attachments?: FileAttachment[], storedAttachments?: StoredAttachment[], options?: SendMessageOptions): Promise<void> { console.log("[HttpAdapter] sendMessage called", { sessionId, message: message.substring(0,50), hasAttachments: !!attachments });
     await this.fetch(`/api/sessions/${sessionId}/messages`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
