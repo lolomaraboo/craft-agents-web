@@ -362,6 +362,62 @@ export class HttpAdapter implements WebElectronAPI {
     return () => {}
   }
 
+  // ============================================================================
+  // Claude OAuth Methods
+  // ============================================================================
+
+  async startClaudeOAuth(): Promise<{ success: boolean; authUrl?: string; error?: string }> {
+    try {
+      const response = await this.fetch('/api/auth/claude-oauth/start', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+      })
+      return response.json()
+    } catch (error) {
+      return {
+        success: false,
+        error: error instanceof Error ? error.message : 'Unknown error'
+      }
+    }
+  }
+
+  async exchangeClaudeCode(code: string): Promise<{ success: boolean; token?: string; error?: string }> {
+    try {
+      const response = await this.fetch('/api/auth/claude-oauth/exchange', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ code }),
+      })
+      return response.json()
+    } catch (error) {
+      return {
+        success: false,
+        error: error instanceof Error ? error.message : 'Unknown error'
+      }
+    }
+  }
+
+  async hasClaudeOAuthState(): Promise<boolean> {
+    try {
+      const response = await this.fetch('/api/auth/claude-oauth/state')
+      const data = await response.json()
+      return data.hasState || false
+    } catch {
+      return false
+    }
+  }
+
+  async clearClaudeOAuthState(): Promise<{ success: boolean }> {
+    try {
+      const response = await this.fetch('/api/auth/claude-oauth/state', {
+        method: 'DELETE',
+      })
+      return response.json()
+    } catch (error) {
+      return { success: false }
+    }
+  }
+
   // Event Methods
   // ============================================================================
 
