@@ -15,9 +15,9 @@ import type {
 } from '@craft-agent/core/types';
 
 // Import mode types from dedicated subpath export (avoids pulling in SDK)
-import type { PermissionMode } from '@craft-agent/shared/agent/modes';
+import type { PermissionMode } from '@craft-agent/shared/agent/mode-types';
 export type { PermissionMode };
-export { PERMISSION_MODE_CONFIG } from '@craft-agent/shared/agent/modes';
+export { PERMISSION_MODE_CONFIG } from '@craft-agent/shared/agent/mode-types';
 
 // Import thinking level types
 import type { ThinkingLevel } from '@craft-agent/shared/agent/thinking-levels';

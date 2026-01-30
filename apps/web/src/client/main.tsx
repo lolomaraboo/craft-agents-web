@@ -1,7 +1,10 @@
 import React from 'react'
 import { createRoot } from 'react-dom/client'
+import { Provider as JotaiProvider } from 'jotai'
 import { HttpAdapter } from './adapters'
 import App from './App'
+import { ThemeProvider } from './context/ThemeContext'
+import { Toaster } from '@/components/ui/sonner'
 import './index.css'
 
 // Inject HTTP adapter as window.electronAPI
@@ -20,6 +23,11 @@ if (!container) {
 const root = createRoot(container)
 root.render(
   <React.StrictMode>
-    <App />
+    <JotaiProvider>
+      <ThemeProvider>
+        <App />
+        <Toaster />
+      </ThemeProvider>
+    </JotaiProvider>
   </React.StrictMode>
 )
