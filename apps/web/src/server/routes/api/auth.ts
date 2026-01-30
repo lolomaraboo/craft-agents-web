@@ -58,13 +58,9 @@ export const authRoutes: FastifyPluginAsync = async (fastify) => {
   }>('/auth/claude-oauth/start', async (request, reply) => {
     try {
       const { startClaudeOAuth } = await import('@craft-agent/shared/auth')
-      const result = await startClaudeOAuth()
+      const authUrl = await startClaudeOAuth()
       
-      if (result.success && result.authUrl) {
-        return { success: true, authUrl: result.authUrl }
-      } else {
-        return { success: false, error: result.error || 'Failed to start OAuth' }
-      }
+      return { success: true, authUrl }
     } catch (error) {
       fastify.log.error('Claude OAuth start failed:', error)
       return {

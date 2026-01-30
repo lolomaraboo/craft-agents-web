@@ -369,8 +369,8 @@ export class HttpAdapter implements WebElectronAPI {
   async startClaudeOAuth(): Promise<{ success: boolean; authUrl?: string; error?: string }> {
     try {
       const response = await this.fetch('/api/auth/claude-oauth/start', {
-        method: 'POST',
         headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({}),
       })
       return response.json()
     } catch (error) {
@@ -386,7 +386,6 @@ export class HttpAdapter implements WebElectronAPI {
       const response = await this.fetch('/api/auth/claude-oauth/exchange', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ code }),
       })
       return response.json()
     } catch (error) {
