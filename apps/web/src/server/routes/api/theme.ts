@@ -85,7 +85,6 @@ export const themeRoutes: FastifyPluginAsync = async (fastify) => {
     // Stub implementation - return empty presets
     return { presets: [] }
   })
-}
 
   // GET /api/theme/presets/:themeId - Get specific preset theme
   fastify.get<{

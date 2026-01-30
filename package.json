@@ -55,6 +55,7 @@
     "@electron/packager": "^19.0.1",
     "@playwright/test": "^1.58.0",
     "@rollup/rollup-win32-arm64-msvc": "^4.55.1",
+    "@tailwindcss/postcss": "^4.1.18",
     "@tailwindcss/vite": "^4.1.18",
     "@types/bun": "latest",
     "@types/js-yaml": "^4.0.9",
