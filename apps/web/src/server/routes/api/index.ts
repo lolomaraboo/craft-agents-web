@@ -9,6 +9,7 @@ import { credentialsRoutes } from './credentials.js'
 import { mcpRoutes } from './mcp.js'
 import { themeRoutes } from './theme.js'
 import { oauthRoutes } from './oauth/index.js'
+import { authRoutes } from './auth.js'
 
 // Type augmentation for SessionManager decorator
 declare module 'fastify' {
@@ -23,6 +24,7 @@ const apiRoutes: FastifyPluginAsync = async (fastify) => {
   fastify.decorate('sessionManager', sessionManager)
 
   // Register all API routes under /api prefix
+  await fastify.register(authRoutes, { prefix: '/api' })          // auth & setup routes
   await fastify.register(sessionsRoutes, { prefix: '/api' })      // from 02-01
   await fastify.register(attachmentsRoutes, { prefix: '/api' })   // file uploads (04-01)
   await fastify.register(workspacesRoutes, { prefix: '/api' })    // workspace CRUD + settings
