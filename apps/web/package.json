@@ -8,7 +8,7 @@
     "dev:client": "vite",
     "dev": "concurrently \"bun run dev:server\" \"bun run dev:client\"",
     "build:client": "vite build",
-    "build": "bun run build:client && bun run tsc -p tsconfig.server.json",
+    "build": "bun run build:client && bun build src/server/index.ts --outdir dist/server --target=bun",
     "start": "node dist/server/index.js",
     "preview": "NODE_ENV=production bun run src/server/index.ts",
     "typecheck": "tsc --noEmit"

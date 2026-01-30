@@ -14,6 +14,7 @@
  * - CommandExpansion: $(...) substitution
  */
 
+// @ts-expect-error - bash-parser has no type definitions
 import bashParser from 'bash-parser';
 import { debug } from '../utils/debug.ts';
 import type { CompiledBashPattern } from './mode-types.ts';

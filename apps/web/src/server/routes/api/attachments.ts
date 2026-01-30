@@ -171,7 +171,8 @@ export const attachmentsRoutes: FastifyPluginAsync = async (fastify) => {
 
         // Stream file
         const stream = createReadStream(attachment.storedPath)
-        return reply.send(stream)
+        // @ts-expect-error - Fastify supports sending streams but types don't reflect it
+        return reply.type(attachment.mimeType).send(stream)
       } catch (error) {
         fastify.log.error(error)
         return reply.code(500).send({

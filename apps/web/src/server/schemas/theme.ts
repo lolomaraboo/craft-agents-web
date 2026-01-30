@@ -1,4 +1,5 @@
-import { Type, Static } from '@sinclair/typebox'
+import { Type } from '@sinclair/typebox'
+import type { Static } from '@sinclair/typebox'
 
 // Theme overrides (matches ThemeOverrides from @config/theme)
 export const ThemeOverridesSchema = Type.Object({

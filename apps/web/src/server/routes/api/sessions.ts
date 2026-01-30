@@ -150,14 +150,10 @@ export const sessionsRoutes: FastifyPluginAsync = async (fastify) => {
     async (request, reply) => {
       try {
         const { id } = request.params
-        const { message, attachments, storedAttachments, options } = request.body
+        const { message } = request.body
 
-        fastify.sessionManager.sendMessage(
-          id,
-          message,
-          attachments,
-          storedAttachments,
-          options
+        fastify.sessionManager.sendMessage(id, message).catch(err => 
+          fastify.log.error({ err }, 'Failed to send message')
         )
 
         // Return 202 Accepted - message queued for processing
@@ -191,7 +187,7 @@ export const sessionsRoutes: FastifyPluginAsync = async (fastify) => {
     async (request, reply) => {
       try {
         const { id } = request.params
-        const result = fastify.sessionManager.cancelProcessing(id)
+        const result = fastify.sessionManager.cancelProcessing()
         return reply.code(200).send(result)
       } catch (error) {
         fastify.log.error(error)

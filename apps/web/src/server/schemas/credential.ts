@@ -1,4 +1,5 @@
-import { Type, Static } from '@sinclair/typebox'
+import { Type } from '@sinclair/typebox'
+import type { Static } from '@sinclair/typebox'
 
 // Credential metadata (value never exposed via API)
 export const CredentialSchema = Type.Object({

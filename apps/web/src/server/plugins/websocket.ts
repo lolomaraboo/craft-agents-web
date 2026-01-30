@@ -42,11 +42,7 @@ async function websocketPluginImpl(fastify: FastifyInstance): Promise<void> {
           unsubscribeFromSession(message.sessionId, socket)
         } else if (message.type === 'permission_response') {
           if (message.requestId) {
-            fastify.sessionManager.respondToPermission(
-              message.requestId,
-              message.allowed ?? false,
-              message.alwaysAllow
-            )
+            fastify.sessionManager.respondToPermission()
           }
         } else {
           fastify.log.debug({ messageType: (message as { type: string }).type }, 'Unknown WebSocket message type')
