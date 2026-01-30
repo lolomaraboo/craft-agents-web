@@ -20,7 +20,7 @@ import {
   Info_Table,
   Info_Markdown,
 } from '@/components/info'
-import type { LoadedSkill } from '../../shared/types'
+import type { LoadedSkill } from '@/types'
 
 interface SkillInfoPageProps {
   skillSlug: string

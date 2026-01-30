@@ -15,9 +15,9 @@ import type {
 } from '@craft-agent/core/types';
 
 // Import mode types from dedicated subpath export (avoids pulling in SDK)
-import type { PermissionMode } from '@craft-agent/shared/agent/modes';
+import type { PermissionMode } from '@craft-agent/shared/agent/mode-types';
 export type { PermissionMode };
-export { PERMISSION_MODE_CONFIG } from '@craft-agent/shared/agent/modes';
+export { PERMISSION_MODE_CONFIG } from '@craft-agent/shared/agent/mode-types';
 
 // Import thinking level types
 import type { ThinkingLevel } from '@craft-agent/shared/agent/thinking-levels';
@@ -893,15 +893,15 @@ export interface ElectronAPI {
   writeWorkspaceImage(workspaceId: string, relativePath: string, base64: string, mimeType: string): Promise<void>
 
   // Theme (app-level only)
-  getAppTheme(): Promise<import('@config/theme').ThemeOverrides | null>
+  getAppTheme(): Promise<import('@craft-agent/shared/config/theme').ThemeOverrides | null>
   // Preset themes (app-level)
-  loadPresetThemes(): Promise<import('@config/theme').PresetTheme[]>
-  loadPresetTheme(themeId: string): Promise<import('@config/theme').PresetTheme | null>
+  loadPresetThemes(): Promise<import('@craft-agent/shared/config/theme').PresetTheme[]>
+  loadPresetTheme(themeId: string): Promise<import('@craft-agent/shared/config/theme').PresetTheme | null>
   getColorTheme(): Promise<string>
   setColorTheme(themeId: string): Promise<void>
 
   // Theme change listeners (live updates when theme.json files change)
-  onAppThemeChange(callback: (theme: import('@config/theme').ThemeOverrides | null) => void): () => void
+  onAppThemeChange(callback: (theme: import('@craft-agent/shared/config/theme').ThemeOverrides | null) => void): () => void
 
   // Logo URL resolution (uses Node.js filesystem cache for provider domains)
   getLogoUrl(serviceUrl: string, provider?: string): Promise<string | null>

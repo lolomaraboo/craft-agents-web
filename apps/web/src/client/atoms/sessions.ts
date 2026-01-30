@@ -10,7 +10,7 @@
 
 import { atom } from 'jotai'
 import { atomFamily } from 'jotai-family'
-import type { Session, Message } from '../../shared/types'
+import type { Session, Message } from '@/types'
 
 /**
  * Session metadata for list display (lightweight, no messages)

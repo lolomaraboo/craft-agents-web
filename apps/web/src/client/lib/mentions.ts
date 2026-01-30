@@ -10,7 +10,7 @@
 
 import type { ContentBadge } from '@craft-agent/core'
 import type { MentionItemType } from '@/components/ui/mention-menu'
-import type { LoadedSkill, LoadedSource } from '../../shared/types'
+import type { LoadedSkill, LoadedSource } from '@/types'
 import { getSourceIconSync, getSkillIconSync } from './icon-cache'
 
 // ============================================================================

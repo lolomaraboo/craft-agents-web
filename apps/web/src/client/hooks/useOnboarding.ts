@@ -18,7 +18,7 @@ import type {
   ApiSetupMethod,
 } from '@/components/onboarding'
 import type { ApiKeySubmitData } from '@/components/apisetup'
-import type { AuthType, SetupNeeds, GitBashStatus } from '../../shared/types'
+import type { AuthType, SetupNeeds, GitBashStatus } from '@/types'
 
 interface UseOnboardingOptions {
   /** Called when onboarding is complete */

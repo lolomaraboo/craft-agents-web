@@ -22,7 +22,7 @@ import type {
   LoadedSource,
   LoadedSkill,
   NewChatActionParams,
-} from '../../shared/types'
+} from '@/types'
 import type { TodoState as TodoStateConfig } from '@/config/todo-states'
 import type { SessionOptions, SessionOptionUpdates } from '../hooks/useSessionOptions'
 import { defaultSessionOptions } from '../hooks/useSessionOptions'

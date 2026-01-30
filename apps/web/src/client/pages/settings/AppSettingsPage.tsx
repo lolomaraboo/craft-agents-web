@@ -35,7 +35,7 @@ import { useUpdateChecker } from '@/hooks/useUpdateChecker'
 import { useOnboarding } from '@/hooks/useOnboarding'
 import { OnboardingWizard } from '@/components/onboarding'
 import { useAppShellContext } from '@/context/AppShellContext'
-import type { PresetTheme } from '@config/theme'
+import type { PresetTheme } from '@craft-agent/shared/config/theme'
 
 export const meta: DetailsPageMeta = {
   navigator: 'settings',

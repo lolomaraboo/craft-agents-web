@@ -26,8 +26,8 @@ import {
   type PermissionRow,
   type ToolRow,
 } from '@/components/info'
-import type { LoadedSource, McpToolWithPermission } from '../../shared/types'
-import type { PermissionsConfigFile } from '@craft-agent/shared/agent/modes'
+import type { LoadedSource, McpToolWithPermission } from '@/types'
+import type { PermissionsConfigFile } from '@craft-agent/shared/agent/mode-types'
 
 interface SourceInfoPageProps {
   sourceSlug: string

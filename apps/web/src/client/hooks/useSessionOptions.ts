@@ -10,7 +10,7 @@
  * 3. Add UI control in FreeFormInput.tsx (or wherever needed)
  */
 
-import type { PermissionMode } from '../../shared/types'
+import type { PermissionMode } from '@/types'
 import type { ThinkingLevel } from '@craft-agent/shared/agent/thinking-levels'
 import { DEFAULT_THINKING_LEVEL } from '@craft-agent/shared/agent/thinking-levels'
 

@@ -6,7 +6,7 @@
  */
 
 import { atom } from 'jotai'
-import type { LoadedSkill } from '../../shared/types'
+import type { LoadedSkill } from '@/types'
 
 /**
  * Atom to store the current workspace's skills.

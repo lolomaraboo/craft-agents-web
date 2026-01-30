@@ -6,7 +6,7 @@
  */
 
 import { atom } from 'jotai'
-import type { LoadedSource } from '../../shared/types'
+import type { LoadedSource } from '@/types'
 
 /**
  * Atom to store the current workspace's sources.

@@ -5,7 +5,7 @@ import {
   type ThemeOverrides,
   type ThemeFile,
   type ShikiThemeConfig,
-} from '@config/theme'
+} from '@craft-agent/shared/config/theme'
 import { useTheme as useThemeContext } from '@/context/ThemeContext'
 
 interface UseThemeOptions {

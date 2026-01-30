@@ -5,7 +5,7 @@
  * All lookups are by ID (turnId, toolUseId) - NEVER by position.
  */
 
-import type { Message, Session } from '../../shared/types'
+import type { Message, Session } from '@/types'
 
 let messageIdCounter = 0
 

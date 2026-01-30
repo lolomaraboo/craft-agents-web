@@ -15,7 +15,7 @@
  */
 
 import type { ComponentType } from 'react'
-import type { ChatFilter } from '../../shared/types'
+import type { ChatFilter } from '@/types'
 
 // =============================================================================
 // Types

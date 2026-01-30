@@ -6,7 +6,7 @@
  */
 
 import { useCallback, useRef } from 'react'
-import type { Session } from '../../shared/types'
+import type { Session } from '@/types'
 import { processEvent } from './processor'
 import type { SessionState, AgentEvent, Effect, StreamingState } from './types'
 import { createEmptySession } from './helpers'

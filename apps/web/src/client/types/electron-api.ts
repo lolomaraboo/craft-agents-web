@@ -1,6 +1,6 @@
 import type { Session, Workspace, StoredAttachment } from '@craft-agent/core/types'
 import type { AuthType } from '@craft-agent/shared/config'
-import type { ThemeOverrides, PresetTheme } from '@config/theme'
+import type { ThemeOverrides, PresetTheme } from '@craft-agent/shared/config/theme'
 
 /**
  * Session event types from server WebSocket

@@ -51,7 +51,7 @@ import { useFocusContext } from "@/context/FocusContext"
 import { getSessionTitle } from "@/utils/session"
 import type { SessionMeta } from "@/atoms/sessions"
 import type { ViewConfig } from "@craft-agent/shared/views"
-import { PERMISSION_MODE_CONFIG, type PermissionMode } from "@craft-agent/shared/agent/modes"
+import { PERMISSION_MODE_CONFIG, type PermissionMode } from "@craft-agent/shared/agent/mode-types"
 
 // Pagination constants
 const INITIAL_DISPLAY_LIMIT = 20

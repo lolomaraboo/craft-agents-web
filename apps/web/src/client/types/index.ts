@@ -1,1 +1,2 @@
-export type { WebElectronAPI, SessionEvent, FileAttachment, CreateSessionOptions, SendMessageOptions, ApiSetupInfo, PreferencesInfo } from './electron-api.js'
+// Re-export all types from shared types for easier imports
+export * from '@/types'

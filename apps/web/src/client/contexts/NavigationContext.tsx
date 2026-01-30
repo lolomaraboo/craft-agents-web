@@ -51,14 +51,14 @@ import type {
   SourceFilter,
   RightSidebarPanel,
   ContentBadge,
-} from '../../shared/types'
+} from '@/types'
 import {
   isChatsNavigation,
   isSourcesNavigation,
   isSettingsNavigation,
   isSkillsNavigation,
   DEFAULT_NAVIGATION_STATE,
-} from '../../shared/types'
+} from '@/types'
 import { sessionMetaMapAtom, updateSessionMetaAtom, type SessionMeta } from '@/atoms/sessions'
 import { sourcesAtom } from '@/atoms/sources'
 import { skillsAtom } from '@/atoms/skills'

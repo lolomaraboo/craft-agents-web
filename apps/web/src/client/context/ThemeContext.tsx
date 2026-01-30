@@ -9,7 +9,7 @@ import {
   type ThemeOverrides,
   type ThemeFile,
   type ShikiThemeConfig,
-} from '@config/theme'
+} from '@craft-agent/shared/config/theme'
 
 export type ThemeMode = 'light' | 'dark' | 'system'
 export type FontFamily = 'inter' | 'system'
