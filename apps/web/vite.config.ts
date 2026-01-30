@@ -19,8 +19,14 @@ export default defineConfig({
     emptyOutDir: true
   },
   server: {
-    host: '127.0.0.1',
+    host: '0.0.0.0',
     port: 5173,
+    allowedHosts: ['31-220-104-244.sslip.io', 'localhost', '127.0.0.1', '31.220.104.244'],
+    hmr: {
+      host: '31-220-104-244.sslip.io',
+      protocol: 'wss',
+      clientPort: 443
+    },
     proxy: {
       '/api': {
         target: 'http://localhost:3000',
