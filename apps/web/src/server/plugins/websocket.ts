@@ -37,6 +37,7 @@ async function websocketPluginImpl(fastify: FastifyInstance): Promise<void> {
 
         // Handle client messages
         if (message.type === 'subscribe') {
+          fastify.log.info({ sessionId: message.sessionId, clientId: req.id }, 'WebSocket subscribe request')
           subscribeToSession(message.sessionId, socket)
         } else if (message.type === 'unsubscribe') {
           unsubscribeFromSession(message.sessionId, socket)

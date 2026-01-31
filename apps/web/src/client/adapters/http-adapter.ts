@@ -47,7 +47,15 @@ export class HttpAdapter {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ workspaceId, ...options }),
     })
-    const data = await response.json(); return data.data || data || []
+    const data = await response.json()
+    const session = data.data || data || []
+    
+    // Subscribe to WebSocket updates for this session
+    if (session.id) {
+      this.ws.subscribeToSession(session.id)
+    }
+    
+    return session
   }
 
   async deleteSession(sessionId: string): Promise<void> {
